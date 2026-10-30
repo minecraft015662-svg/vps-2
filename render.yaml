@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: vpanel
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - {key: ADMIN_USER, value: admin}
+      - {key: ADMIN_PASS, sync: false}
+      - {key: DATA_FILE, value: /data/data.json}
+    disk: {name: data, mountPath: /data, sizeGB: 1}
